@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>fPost</title>
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
+<script src="/static/script.js"></script>
+</head>
+
+<body>
+<div id="container">
+    {% if res[0] %}{{res[0]}}{% else %}Title{% endif %}<br/>
+    {% if res[1] %}{{res[1]}}{% else %}Name{% endif %}<br/>
+    {% if res[2] %}{{res[2]}}{% else %}Post{% endif %}<br/>
+</div>
+</body>
+</html>
