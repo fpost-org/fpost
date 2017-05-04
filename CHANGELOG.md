@@ -1,7 +1,14 @@
 CHANGELOG
 ============
 
-0.1.0 / 2017-05-04
+in next releases
+------------------
+
+* implement continuous integration
+* implement unit tests
+* implement BDD tests
+
+0.0.3 / 2017-05-04
 ------------------
 
 * add LICENSE
