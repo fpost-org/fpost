@@ -3,16 +3,30 @@
 <head>
 <meta charset="utf-8">
 <title>fPost</title>
+<meta name="robots" content="index, follow"/>
+<meta property="og:site_name" content="fpost">
+<meta property="og:title" content="fpost">
+<meta property="og:description" content="fpost">
+<meta property="og:image" content="https://fpost.org/static/fp32.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fpost">
+<meta name="twitter:description" content="fpost">
+<meta name="twitter:image" content="https://fpost.org/static/fp32.png">
+<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/static/fp16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/static/fp32.png" sizes="32x32">
 <link rel="stylesheet" type="text/css" href="/static/styles.css">
-<script src="/static/script.js"></script>
+
 </head>
 
 <body>
 <div id="container">
-    <input type="text" id="title"/> Title<br/>
-    <input type="text" id="name"/> Name<br/>
-    <input type="text" id="post"/> Post<br/>
+    <p><input type="text" id="title" value="Title"/></p>
+    <p><input type="text" id="name" value="Name"/> </p>
+    <textarea name="text" id="post">post</textarea>
     <button onclick="result()">Push</button>
+    <script src="/static/autosize.min.js"></script>
+ 	<script src="/static/script.js"></script>  
 </div>
 </body>
 </html>

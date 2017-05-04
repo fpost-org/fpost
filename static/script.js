@@ -1,3 +1,5 @@
+autosize(document.querySelector('textarea'));
+
 function getXmlHttp() {
     var xmlhttp;
     try {
