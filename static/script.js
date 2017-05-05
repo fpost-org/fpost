@@ -1,3 +1,4 @@
+addEventListener("keydown", keydown);
 autosize(document.querySelector('textarea'));
 
 function getXmlHttp() {
@@ -29,4 +30,13 @@ function result() {
                 document.location.href = xmlhttp.responseText;
         }
     }
+}
+
+function keydown(e){
+	if (e.keyCode === 13) {
+		nextfocus();
+    }
+}
+
+function nextfocus(){
 }
