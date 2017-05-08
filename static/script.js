@@ -39,4 +39,11 @@ function keydown(e){
 }
 
 function nextfocus(){
+	if($("#name").is(":focus") ){
+		document.getElementById('post').focus();
+			
+	}
+	if($("#title").is(":focus") ){
+		document.getElementById('name').focus();			
+	}
 }
