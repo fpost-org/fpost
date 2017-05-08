@@ -1,2 +1,4 @@
 form,input,button {margin:0px;}
 #container{width:250px; margin:auto;position: relative;}
+.incorrect{border:1px solid red;}
+#error{color:red;}
