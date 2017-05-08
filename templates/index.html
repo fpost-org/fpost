@@ -16,7 +16,6 @@
 <link rel="icon" type="image/png" href="/static/fp16.png" sizes="16x16">
 <link rel="icon" type="image/png" href="/static/fp32.png" sizes="32x32">
 <link rel="stylesheet" type="text/css" href="/static/styles.css">
-
 </head>
 
 <body>
@@ -24,12 +23,11 @@
     <p><input type="text" id="title" placeholder="Title" class="field" autofocus/></p>
     <p><input type="text" id="name" placeholder="Name" class="field"/></p>
     <textarea name="text" id="post" placeholder="Post" class="post" rows="1"></textarea>
-    <div id="error"></div>
-    <button onclick="send_push()">Push</button>
-    <script src="/static/jquery.min.js"></script>
-    <script src="/static/autosize.min.js"></script>
-    <script src="/static/script.js"></script>
-
+    <div id="error"><p></p></div>
+    <button class="button" onclick="send_push()">Push</button>
 </div>
+<script src="/static/jquery.min.js"></script>
+<script src="/static/autosize.min.js"></script>
+<script src="/static/script.js"></script>
 </body>
 </html>
