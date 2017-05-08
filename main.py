@@ -11,8 +11,15 @@ def index():
         return render_template('index.html')
     
     elif request.method == 'POST':
-        title = request.form['title'] 
-        res = DB().insert_db(title, request.form['name'], request.form['post'])
+        title = request.form['title']
+        name = request.form['name']
+        post = ""
+        for param in request.form:
+            key = format(param);
+            if key.find("post") == 0:
+                post = post + "<p>" + request.form.get(key) + "</p>"
+        
+        res = DB().insert_db(title, name, post)
         return '/' + title
 
 @app.route('/db', methods=['GET'])

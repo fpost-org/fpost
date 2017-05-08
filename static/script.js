@@ -36,7 +36,7 @@ function send_push(){
 
 function result() {
 	
-    var a = "title=" + document.getElementById("title").value + "&name=" + document.getElementById("name").value + "&post=" + document.getElementById("post").value;
+    var a = getbodypost();    
     var xmlhttp = getXmlHttp();
     xmlhttp.open('POST', '', true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -102,4 +102,15 @@ function show_error(status = true, value = "", add = false){
 	}else if(status === false){
 		$("#error").text('');
 	}	
+}
+
+function getbodypost(){
+	var a = "title=" + encodeURIComponent($("#title").val());
+	a += "&name=" + encodeURIComponent($("#name").val());
+	int = 0;
+	$(".post").each(function(index,value){
+		int = int + 1;
+  		a += "&post" + int + "=" + $(this).val().replace(/[\n\r]/g, '');
+  	});
+	return a;
 }
