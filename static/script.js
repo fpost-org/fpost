@@ -1,5 +1,5 @@
-addEventListener("keydown", keydown);
-autosize(document.querySelector('textarea'));
+addEventListener("keyup", keyup);
+autosize($('textarea'));		
 
 $(".field").change(function() {
 	if($(this).hasClass("incorrect")){
@@ -49,16 +49,23 @@ function result() {
     }
 }
 
-function keydown(e){
+function keyup(e){
 	if (e.keyCode === 13) {
-		nextfocus();
+		nextfocus();	
     }
 }
 
 function nextfocus(){
+	
+	$(".post").each(function(index,value){
+  		if($(this).is(":focus") ){
+			$('<textarea name="text" class="post" rows="1"></textarea>').insertAfter($(this)).focus();		
+			autosize($('textarea'));		
+		}
+  	});
+	
 	if($("#name").is(":focus") ){
-		document.getElementById('post').focus();
-			
+		document.getElementById('post').focus();		
 	}
 	if($("#title").is(":focus") ){
 		document.getElementById('name').focus();			
