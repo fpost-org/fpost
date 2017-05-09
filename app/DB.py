@@ -11,7 +11,7 @@ class DB:
     def create_db():
         conn = sqlite3.connect(DB.sqlitedb)
         c = conn.cursor()
-        c.execute('''CREATE TABLE post (title varchar, name varchar, text varchar)''')
+        c.execute('''CREATE TABLE IF NOT EXISTS post (title varchar, name varchar, text varchar)''')
         conn.commit()
         c.close()
         conn.close()
@@ -19,7 +19,7 @@ class DB:
     
     @staticmethod
     def insert_db(title, name, text):
-        conn = sqlite3.connect('my.db')
+        conn = sqlite3.connect(DB.sqlitedb)
         rows = [(title, name, text)]
         conn.cursor().executemany("INSERT INTO post VALUES (?,?,?)", rows)
         conn.commit()

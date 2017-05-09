@@ -1,5 +1,5 @@
 addEventListener("keyup", keyup);
-autosize($('textarea'));		
+autosize($('textarea'));
 
 $(".field").change(function() {
 	if($(this).hasClass("incorrect")){
@@ -51,7 +51,7 @@ function result() {
 
 function keyup(e){
 	if (e.keyCode === 13) {
-		nextfocus();	
+		nextfocus();		
     }
 }
 
@@ -59,8 +59,16 @@ function nextfocus(){
 	
 	$(".post").each(function(index,value){
   		if($(this).is(":focus") ){
-			$('<textarea name="text" class="post" rows="1"></textarea>').insertAfter($(this)).focus();		
-			autosize($('textarea'));		
+  			check = check_link($(this).val());
+			if(check === false){
+  				$(this).val().replace(/[\n\r]/g, '');
+  				$('<textarea name="text" class="post" rows="1"></textarea>').insertAfter($(this)).focus();
+  			}else{				
+  				kod = $(this).val().replace(/[\n\r]/g, '');
+  				$(this).val('');
+  				$(this).before('<div class="social_media"><p class="postsocial" hidden="true">'+kod+ '</p>'+check+'</div>').focus();	
+  			}
+  			autosize($('textarea'));			
 		}
   	});
 	
@@ -113,4 +121,15 @@ function getbodypost(){
   		a += "&post" + int + "=" + $(this).val().replace(/[\n\r]/g, '');
   	});
 	return a;
+}
+
+function check_link(elem){
+	
+	youtube = elem.match(/.*youtube\.com\/watch\?.*v=(\w*)/);
+	
+	if (youtube != null){
+		return '<iframe width="640" height="360" src="https://www.youtube.com/embed/'+youtube[1]+'" frameborder="0" allowfullscreen></iframe>';
+	}else{
+		return false;
+	}
 }
