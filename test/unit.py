@@ -1,12 +1,10 @@
 import unittest
 
-import TestCore
-import TestClasse
+import Test_DB_Class
 
 loader = unittest.TestLoader()
 
-suite = loader.loadTestsFromModule(TestCore)
-suite.addTests(loader.loadTestsFromModule(TestClasse))
+suite = loader.loadTestsFromModule(Test_DB_Class)
 
 runner = unittest.TextTestRunner(verbosity=2)
 result = runner.run(suite)
