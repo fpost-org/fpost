@@ -8,4 +8,5 @@ header{max-width:700px; margin:auto;}
 .autor{font-size: 14px; font-family: CustomSerif,Georgia,'Times New Roman',serif,Arial;}
 .social_media{}
 .postsocial{}
-.help{font-size: 11px; font-family: CustomSerif,Georgia,'Times New Roman',serif,Arial;}
+.help{font-size: 14px; font-family: CustomSerif,Georgia,'Times New Roman',serif,Arial; display:none; border:1px solid black;border-radius: 5px;}
+.close_tab{font-size: 11px; font-family: CustomSerif,Georgia,'Times New Roman',serif,Arial; text-align:right;}

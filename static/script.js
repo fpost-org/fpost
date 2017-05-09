@@ -8,6 +8,8 @@ $(".field").change(function() {
 	}
 });
 
+var comand = "";
+
 function getXmlHttp() {
     var xmlhttp;
     try {
@@ -31,7 +33,26 @@ function send_push(){
 		//alert('incorrect');
 	}else{
 		result();
+		//post_ajax();
 	}
+}
+
+function post_ajax(){
+	var someObj = {title:"test11",name:"name111",post:"post111"};
+	$.ajax({
+  		type: "POST",
+  		url: "/",
+  		data: someObj,
+  		success: function(res) {
+    		document.location.href = res;
+  		}
+	});
+}
+
+function serializejson2(){
+	obj = $("#container").serializeJSON();
+	alert(JSON.stringify(obj));
+	$(".help").val(JSON.stringify(obj));
 }
 
 function result() {
@@ -52,6 +73,19 @@ function result() {
 function keyup(e){
 	if (e.keyCode === 13) {
 		nextfocus();		
+    }else if(e.keyCode === 27) {
+    	if($(".help").css("display") == "block"){
+    		hidden_help();		
+    	}    	
+    }else if(e.keyCode === 107) {
+    	if((comand == "+") || (comand == "")){
+    		comand += "+";
+    	}	
+    }else if ((e.keyCode === 72) && (comand == "++")){
+    	$(".help").css("display", "block");
+    	comand = "";
+    }else {
+    	comand = '';	
     }
 }
 
@@ -132,4 +166,8 @@ function check_link(elem){
 	}else{
 		return false;
 	}
+}
+
+function hidden_help(){
+	$(".help").css('display','none')
 }
