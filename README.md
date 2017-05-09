@@ -2,4 +2,4 @@
 
 # fpost
 
-Tool anonymous publication with a high degree of protection
+Tool publication with a high degree of protection
