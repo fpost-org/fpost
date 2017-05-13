@@ -7,15 +7,15 @@
 <meta property="og:site_name" content="fpost">
 <meta property="og:title" content="fpost">
 <meta property="og:description" content="fpost">
-<meta property="og:image" content="https://fpost.org/static/fp32.png">
+<meta property="og:image" content="https://fpost.org/static/img/fp32.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fpost">
 <meta name="twitter:description" content="fpost">
-<meta name="twitter:image" content="https://fpost.org/static/fp32.png">
+<meta name="twitter:image" content="https://fpost.org/static/img/fp32.png">
 <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" href="/static/fp16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/static/fp32.png" sizes="32x32">
-<link rel="stylesheet" type="text/css" href="/static/styles.css">
+<link rel="icon" type="image/png" href="/static/img/fp16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/static/img/fp32.png" sizes="32x32">
+<link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 </head>
 
 <body>
@@ -25,9 +25,14 @@
     <textarea name="text" id="post" placeholder="Post" class="post" rows="1"></textarea>
     <div id="error"><p></p></div>
     <button class="button" onclick="send_push()">Push</button>
+    <!-- <button class="button" onclick="serializejson2()">serializejson</button> -->
+    <div class="help">
+    <div class="close_tab">ESC or <img src="/static/img/close20.png" onclick="hidden_help()"></div>
+    Insert youtube url and press Enter
+    </div>
 </div>
-<script src="/static/jquery.min.js"></script>
-<script src="/static/autosize.min.js"></script>
-<script src="/static/script.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/autosize.min.js"></script>
+<script src="/static/js/script.js"></script>
 </body>
 </html>
