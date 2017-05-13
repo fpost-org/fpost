@@ -32,27 +32,22 @@ function send_push(){
 	if(fields_incorrect() === false){
 		//alert('incorrect');
 	}else{
-		result();
-		//post_ajax();
+		//result();
+		post_ajax();
 	}
 }
 
 function post_ajax(){
-	var someObj = {title:"test11",name:"name111",post:"post111"};
+	var data = 'title='+$("#title").val()+'&name='+$("#name").val()+'&post='+JSON.stringify(serializejson())
+	
 	$.ajax({
   		type: "POST",
   		url: "/",
-  		data: someObj,
+  		data: data,
   		success: function(res) {
     		document.location.href = res;
   		}
 	});
-}
-
-function serializejson2(){
-	obj = $("#container").serializeJSON();
-	alert(JSON.stringify(obj));
-	$(".help").val(JSON.stringify(obj));
 }
 
 function result() {
