@@ -2,4 +2,12 @@
 
 # fpost
 
+<<<<<<< HEAD
 Tool publication with a high degree of protection
+=======
+<<<<<<< HEAD
+Tool publication with a high degree of protection
+=======
+Tool anonymous publication with a high degree of protection
+>>>>>>> refs/remotes/origin/master
+>>>>>>> refs/heads/master
