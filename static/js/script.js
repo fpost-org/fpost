@@ -38,7 +38,9 @@ function send_push(){
 }
 
 function post_ajax(){
-	var data = 'title='+$("#title").val()+'&name='+$("#name").val()+'&post='+JSON.stringify(serializejson())
+	var data = 'title='+encodeURIComponent($("#title").val());
+	data += '&name='+encodeURIComponent($("#name").val());
+	data += '&post='+encodeURIComponent(serializejson());
 	
 	$.ajax({
   		type: "POST",

@@ -1,9 +1,7 @@
 from flask import Flask, request, redirect
 from flask.templating import render_template
 from app.DB import DB
-from app.post import Content
-from cgi import escape
-import html
+from app.core import *
 
 app = Flask(__name__)
 
@@ -13,16 +11,7 @@ def index():
         return render_template('index.html')
     
     elif request.method == 'POST':
-        title = html.unescape(request.form['title'])
-        name = html.unescape(request.form['name'])
-        post = ""
-        for param in request.form:
-            key = format(param);
-            if key.find("post") == 0:
-                post = post + "<p>" + request.form.get(key) + "</p>"
-        post = html.unescape(post);
-        res = DB().insert_db(title, name, post)
-        return '/' + title
+        return post_processing(request)
 
 @app.route('/db', methods=['GET'])
 def show_db():
