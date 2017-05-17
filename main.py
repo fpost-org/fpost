@@ -3,7 +3,9 @@ from flask.templating import render_template
 from app.DB import DB
 from app.core import *
 
+DEBUG = False
 app = Flask(__name__)
+flask_db = DB()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -11,19 +13,13 @@ def index():
         return render_template('index.html')
     
     elif request.method == 'POST':
-        return post_processing(request)
+        return post_processing(request, flask_db)
 
-@app.route('/db', methods=['GET'])
-def show_db():
-    return DB().show_db()
 
-@app.route('/create', methods=['GET'])
-def create_db():
-    return DB().create_db()
  
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
-    res = DB().getpostbyname(postname)
+    res = flask_db.getpostbyname(postname)
     return render_template('post.html', res=res).replace("!!!Post!!!", res[2])
     
 @app.errorhandler(404)
@@ -31,4 +27,4 @@ def page_not_found(error):
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug = DEBUG
