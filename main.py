@@ -15,6 +15,7 @@ def index():
     elif request.method == 'POST':
         return post_processing(request, flask_db)
 
+
  
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
