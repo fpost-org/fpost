@@ -7,6 +7,7 @@ import re
 
 
 def post_processing(request, flask_db):
+
     title = html.unescape(request.form['title'])
     name = html.unescape(request.form['name'])
         
@@ -22,6 +23,8 @@ def post_processing(request, flask_db):
             post += '<p>' + cont + '</p>' 
         elif json_p[p]['type'] == "youtube":
             post += '<p>' + urllib.request.unquote(json_p[p]['content']) + '</p>' 
+
     res = flask_db.insert(title, name, post)
+
     return '/' + title
     

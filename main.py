@@ -14,6 +14,7 @@ def index():
     
     elif request.method == 'POST':
         return post_processing(request, flask_db)
+
  
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
@@ -25,4 +26,4 @@ def page_not_found(error):
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug = DEBUG)
+    app.run(debug = DEBUG
