@@ -5,6 +5,7 @@ import urllib.request
 import re
 from app.DB import DB
 
+
 def post_processing(request):
     title = html.unescape(request.form['title'])
     name = html.unescape(request.form['name'])
@@ -21,6 +22,6 @@ def post_processing(request):
             post += '<p>' + cont + '</p>' 
         elif json_p[p]['type'] == "youtube":
             post += '<p>' + urllib.request.unquote(json_p[p]['content']) + '</p>' 
-    res = DB().insert_db(title, name, post)
+    res = DB().insert(title, name, post)
     return '/' + title
     

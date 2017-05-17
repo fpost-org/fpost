@@ -1,11 +1,36 @@
 # coding=utf-8
 import sqlite3
+import psycopg2
+import psycopg2.extras
+from pip._vendor.distlib import database
 
-class DB:
-    def __init__(self):
-        a=1
+def check_db(db, user, host, pas):
+    try:
+        conn = psycopg2.connect(database=db, user=user, host=host, password=pas)
+    except psycopg2.Error as err:
+        return False
+            
+    sql = "SELECT * FROM post LIMIT 3"
+        
+    try:
+        cur = conn.cursor()
+        cur.execute(sql)
+        return True
+    except psycopg2.Error as err:
+        return False
+
+class DB:    
     
-    sqlitedb = 'my.db'    
+    def __init__(self):
+        a = ''
+  
+    db = 'fpost'
+    user = 'postgres'
+    host = 'localhost'
+    pas = 'sxjkjvdfhjw72jKldcjn'                  
+    
+    sqlitedb = 'my.db'
+    conn = ''
     
     @staticmethod
     def create_db():
@@ -25,6 +50,15 @@ class DB:
         conn.commit()
         conn.close()
         return True
+    
+    @staticmethod
+    def insert(title, name, text):
+        conn = psycopg2.connect(database=DB.db, user=DB.user, host=DB.host, password=DB.pas)
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO post VALUES ("'+title+'", "'+name+'", "'+text+'");')
+        conn.commit()
+        return True
+    
         
     @staticmethod
     def show_db():
@@ -43,10 +77,7 @@ class DB:
         
     @staticmethod
     def getpostbyname(name):
-        conn = sqlite3.connect(DB.sqlitedb)
-        c = conn.cursor()
-        c.execute('SELECT * FROM post WHERE title = "' + name + '"')
-        row = c.fetchone()
-        c.close()
-        conn.close()
+        cursor = DB.conn.cursor()
+        cursor.execute('SELECT * FROM post WHERE title = "' + name + '"')
+        row = cursor.fetchone()
         return row        

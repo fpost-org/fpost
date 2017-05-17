@@ -15,11 +15,11 @@ def index():
 
 @app.route('/db', methods=['GET'])
 def show_db():
-    return DB().show_db()
+    return db1.show_db()
 
 @app.route('/create', methods=['GET'])
 def create_db():
-    return DB().create_db()
+    return db1.create_db()
  
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
