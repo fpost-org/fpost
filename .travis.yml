@@ -6,4 +6,4 @@ script:
 - cd ./test
 - python unit.py -v
 - cd ..
-- setup.sh
+- sh setup.sh
