@@ -3,7 +3,4 @@ language: python
 install: "pip install -r requirements.txt"
 
 script: 
-- cd ./test
-- python unit.py -v
-- cd ..
 - sh setup.sh
