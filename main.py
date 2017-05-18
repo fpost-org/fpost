@@ -27,4 +27,4 @@ def page_not_found(error):
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug = DEBUG
+    app.run(debug = DEBUG)
