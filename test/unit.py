@@ -1,5 +1,4 @@
 import unittest
-
 import Test_DB_Class
 
 loader = unittest.TestLoader()

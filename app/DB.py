@@ -39,4 +39,14 @@ class DB:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM post WHERE title = '" + name + "'")
         row = cursor.fetchone()
-        return row        
+        return row
+    
+    @staticmethod
+    def create_db():
+        conn = psycopg2.connect(database=DB.db, user=DB.user, host=DB.host, password=DB.pas)
+        c = conn.cursor()
+        c.execute("CREATE TABLE IF NOT EXISTS post (title varchar, name varchar, text varchar)")
+        conn.commit()
+        c.close()
+        conn.close()
+        return True        
