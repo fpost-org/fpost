@@ -11,7 +11,7 @@ class DB:
     @staticmethod
     def check():
         try:
-            conn = psycopg2.connect(database=db, user=user, host=host, password=pas)
+            conn = psycopg2.connect(database=DB.db, user=DB.user, host=DB.host, password=DB.pas)
         except psycopg2.Error as err:
             return False
             

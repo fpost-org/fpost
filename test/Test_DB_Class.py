@@ -6,7 +6,7 @@ sys.path.append("..")
 from app.DB import DB
 
 class TestDB(unittest.TestCase):
-    def testInsert(self):
+    def testDbInsert(self):
         title = hmac.new(bytearray('signature','utf-8'), bytearray(str(random.random()),'utf-8'), hashlib.sha256).hexdigest()
         name = hmac.new(bytearray('signature','utf-8'), bytearray(str(random.random()),'utf-8'), hashlib.sha256).hexdigest()
         post = hmac.new(bytearray('signature','utf-8'), bytearray(str(random.random()),'utf-8'), hashlib.sha256).hexdigest()
@@ -17,9 +17,8 @@ class TestDB(unittest.TestCase):
         if (res[0]==title and res[1]==name and res[2]==post):
             flag = True
         self.assertTrue(flag)
-    
-    
-    def check(self):
+     
+    def testDbCheck(self):
         flag = DB.check()
         self.assertTrue(flag)
      

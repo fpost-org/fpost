@@ -1,7 +1,18 @@
 language: python
+python:
+- "3.6"
 
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.4"
+  
+before_script:
+  - psql -c 'create database fpost;' -U postgres
+  - psql -c "ALTER USER postgres WITH PASSWORD 'secret'" -d template1 -U postgres
+  
 install: "pip install -r requirements.txt"
 
 script: 
-- cd ./test
-- python unit.py -v
+- python test/test.py
