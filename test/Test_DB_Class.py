@@ -1,8 +1,8 @@
 import unittest
 import hmac, hashlib
 import random
-import sys
-sys.path.append("..")
+#import sys
+#sys.path.append("..")
 from app.DB import DB
 
 class TestDB(unittest.TestCase):
