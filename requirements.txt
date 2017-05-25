@@ -1,2 +1,2 @@
--Iv flask==0.12.2
--Iv psycopg2==2.7.1
+flask==0.12.2
+psycopg2==2.7.1
