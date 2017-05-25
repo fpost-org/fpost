@@ -15,5 +15,6 @@ before_script:
   
 install: "pip install -r requirements.txt"
 
-script: 
-- python test/unit.py
+script:
+- cd ./test 
+- python unit.py
