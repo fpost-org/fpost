@@ -25,8 +25,7 @@ def post_processing(request, flask_db):
         elif json_p[p]['type'] == "youtube":
             post += '<p>' + urllib.request.unquote(json_p[p]['content']) + '</p>' 
 
+    title = flask_db.check_title(title)
     res = flask_db.insert(title, name, post)
 
-
     return '/' + title
-    
