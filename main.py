@@ -20,7 +20,7 @@ def index():
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
     res = flask_db.getpostbyname(postname)
-    return render_template('post.html', res=res).replace("!!!Post!!!", res[2])
+    return render_template('post.html', res=res).replace('<div class="post"></div>', '<div class="post">'+res[2]+'</div>' )
     
 @app.errorhandler(404)
 def page_not_found(error):
