@@ -158,7 +158,6 @@ function check_link(elem){
 	
 	youtube = elem.match(/.*youtube\.com\/watch\?.*v=(\w*)/);
 	twitter = null;
-	//https://www.instagram.com/p/BT3eMshFIKQ/
 	instagram = elem.match(/.*instagram\.com\/p\/(\w*[-]*\w*)\/?/);
 	
 	
