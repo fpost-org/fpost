@@ -1,7 +1,8 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, send_from_directory
 from flask.templating import render_template
 from app.DB import DB
 from app.core import *
+import os
 
 DEBUG = False
 app = Flask(__name__)
@@ -15,8 +16,10 @@ def index():
     elif request.method == 'POST':
         return post_processing(request, flask_db)
 
+@app.route('/favicon.ico')
+def icon():
+    return send_from_directory(os.path.join(app.root_path, 'static', 'img'), 'favicon.ico',  mimetype='image/png')
 
- 
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
     res = flask_db.getpostbyname(postname)
