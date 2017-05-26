@@ -157,9 +157,15 @@ function getbodypost(){
 function check_link(elem){
 	
 	youtube = elem.match(/.*youtube\.com\/watch\?.*v=(\w*)/);
+	twitter = null;
+	//https://www.instagram.com/p/BT3eMshFIKQ/
+	instagram = elem.match(/.*instagram\.com\/p\/(\w*[-]*\w*)\/?/);
+	
 	
 	if (youtube != null){
 		return '<iframe width="640" height="360" src="https://www.youtube.com/embed/'+youtube[1]+'" frameborder="0" allowfullscreen></iframe>';
+	}else if(instagram != null){
+		return '<iframe src="https://www.instagram.com/p/' + instagram[1] + '/embed/" width="612" height="710" frameborder="0" scrolling="no" allowtransparency="true"></iframe>'
 	}else{
 		return false;
 	}
