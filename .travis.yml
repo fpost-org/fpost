@@ -16,6 +16,9 @@ before_script:
 install: "pip install -r requirements.txt"
 
 script:
+- pip install chromedriver_installer==0.0.6 \
+	--install-option="--chromedriver-version=2.10" \
+    --install-option="--chromedriver-checksums=4fecc99b066cb1a346035bf022607104,058cd8b7b4b9688507701b5e648fd821"
 - cd ./test
 - python unit.py
 - python main.py &
