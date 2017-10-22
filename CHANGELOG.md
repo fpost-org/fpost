@@ -7,6 +7,7 @@ in next releases
 * implement continuous integration
 * implement unit tests
 * implement BDD tests
+* refactoring code
 
 0.0.3 / 2017-05-04
 ------------------
