@@ -15,7 +15,9 @@ def index():
     elif request.method == 'POST':
         return post_processing(request, flask_db)
 
-
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    return render_template('admin.html')
  
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
