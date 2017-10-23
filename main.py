@@ -4,6 +4,7 @@ from app.DB import DB
 from app.core import *
 
 DEBUG = False
+
 app = Flask(__name__)
 flask_db = DB()
 
