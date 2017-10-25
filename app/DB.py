@@ -1,17 +1,20 @@
 # coding=utf-8
 import psycopg2
 import psycopg2.extras
+import getconf
 
 class DB:    
-    db = 'fpost'
-    user = 'postgres'
-    host = 'localhost'
-    pas = 'secret'
+
+    def __init__(self):
+        config = getconf.ConfigGetter('fpost', ['./app/config.ini', './app/settings.ini'])
+        self.db = config.get('db.db', '')
+        self.host = config.get('db.host', '')
+        self.user = config.get('db.user', '')
+        self.pas = config.get('db.pas', '')
     
-    @staticmethod
     def check():
         try:
-            conn = psycopg2.connect(database=DB.db, user=DB.user, host=DB.host, password=DB.pas)
+            conn = psycopg2.connect(database=self.db, user=self.user, host=self.host, password=self.pas)
         except psycopg2.Error as err:
             return False
             
