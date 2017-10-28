@@ -3,7 +3,7 @@ import html
 import json
 import urllib.request
 import re
-#from app.DB import DB
+from app.DB import DB
 
 
 def post_processing(request, flask_db):
@@ -25,7 +25,7 @@ def post_processing(request, flask_db):
         elif json_p[p]['type'] == "youtube":
             post += '<p>' + urllib.request.unquote(json_p[p]['content']) + '</p>' 
 
-    res = flask_db.insert(title, name, post)
+    res = DB.insert(flask_db, title, name, post)
 
 
     return '/' + title

@@ -22,7 +22,7 @@ def admin():
  
 @app.route('/<postname>', methods=['GET'])
 def show_post(postname):
-    res = flask_db.getpostbyname(postname)
+    res = DB.getpostbyname(flask_db, postname)
     return render_template('post.html', res=res).replace("!!!Post!!!", res[2])
     
 @app.errorhandler(404)

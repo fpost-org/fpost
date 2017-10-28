@@ -7,14 +7,18 @@ class DB:
 
     def __init__(self):
         config = getconf.ConfigGetter('fpost', ['./app/config.ini', './app/settings.ini'])
-        self.db = config.get('db.db', '')
-        self.host = config.get('db.host', '')
-        self.user = config.get('db.user', '')
-        self.pas = config.get('db.pas', '')
+        self.__db = config.get('db.db', '')
+        self.__host = config.get('db.host', '')
+        self.__user = config.get('db.user', '')
+        self.__pas = config.get('db.pas', '')
     
-    def check():
+    def __str__(self):
+        return '[Connection to data base: %s, %s]' % (self.__host, self.__db)
+        
+    @staticmethod
+    def check(self):
         try:
-            conn = psycopg2.connect(database=self.db, user=self.user, host=self.host, password=self.pas)
+            conn = psycopg2.connect(database=self.__db, user=self.__user, host=self.__host, password=self.__pas)
         except psycopg2.Error as err:
             return False
             
@@ -28,17 +32,20 @@ class DB:
             return False
 
     @staticmethod
-    def insert(title, name, text):
-        conn = psycopg2.connect(database=DB.db, user=DB.user, host=DB.host, password=DB.pas)
+    def insert(self, title, name, text):
+        conn = psycopg2.connect(database=self.__db, user=self.__user, host=self.__host, password=self.__pas)
         cursor = conn.cursor()
         sql = "INSERT INTO post(title, name, text) VALUES ('" + title + "', '" + name + "', '" + text + "')"
-        cursor.execute(sql)
-        conn.commit()
-        return True
+        try:
+            cursor.execute(sql)
+            conn.commit()
+            return True
+        except psycopg2.Error as err:
+            return False
         
     @staticmethod
-    def getpostbyname(name):
-        conn = psycopg2.connect(database=DB.db, user=DB.user, host=DB.host, password=DB.pas)
+    def getpostbyname(self, name):
+        conn = psycopg2.connect(database=self.__db, user=self.__user, host=self.__host, password=self.__pas)
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM post WHERE title = '" + name + "'")
         row = cursor.fetchone()
