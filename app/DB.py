@@ -52,11 +52,18 @@ class DB:
         return row
     
     @staticmethod
-    def create_db():
-        conn = psycopg2.connect(database=DB.db, user=DB.user, host=DB.host, password=DB.pas)
+    def create_db(self):
+        conn = psycopg2.connect(database=self.__db, user=self.__user, host=self.__host, password=self.__pas)
         c = conn.cursor()
         c.execute("CREATE TABLE IF NOT EXISTS post (title varchar, name varchar, text varchar)")
         conn.commit()
         c.close()
         conn.close()
-        return True        
+        return True
+    
+    def load_config(self, file):
+        config = getconf.ConfigGetter('fpost', file)
+        self.__db = config.get('db.db', '')
+        self.__host = config.get('db.host', '')
+        self.__user = config.get('db.user', '')
+        self.__pas = config.get('db.pas', '')        
