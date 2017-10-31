@@ -2,3 +2,5 @@ flask==0.12.2
 psycopg2==2.7.1
 getconf==1.7.1
 behave==1.2.5
+selenium==3.6.0
+chromedriver_installer==0.0.6
